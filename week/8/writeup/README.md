@@ -18,6 +18,10 @@ The admin password is generated with a random number generator seeded with the s
 
 2. Describe two vulnerabilities in this program. Provide specific line numbers and classifications of the vulnerability. Explain potential ramifications as well as ways to avoid these vulnerabilities when writing code.
 
+The code that generates the admin password begins at line 89 in main(). As mentioned above, the trouble with this generator is that anyone who knows how it works can replicate it. There are a number of ways to make this more secure; for a start, it would be better to have a separate executable for generating the password so that even if someone gets the source code for the public-facing server executable they still don't know how the password is generated. But really, the proper thing to do is to use a good static password stored behind a secure hashing algorithm such as SHA-256.
+
+At line 68 in the exec\_command function you use the gets function. This function is highly deprecated and known to be vulnerable to buffer overflow exploits; because it does not check the size of the input buffer when it takes input, the end user can accidentally or intentionally overwrite other data below the buffer on the stack. This can be avoided by getting input using a secure function, like fgets(), which limits the number of bytes of input the program can read.
+
 3. What is the flag?
 
 CMSC389R-{expl017-2-w1n}
