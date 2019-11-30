@@ -1,7 +1,7 @@
 # Writeup 1 - Web I
 
-Name: *PUT YOUR NAME HERE*
-Section: *PUT YOUR SECTION NUMBER HERE*
+Name: Nathan Stiff
+Section: 0101
 
 I pledge on my honor that I have not given or received any unauthorized assistance on this assignment or examination.
 
@@ -31,6 +31,8 @@ Level 1: Typed in <script>alert("hi");</script> and won.
 Level 2: It took me a bit of pondering and looking through the code to realize that a <script> wouldn't be executed because it is inserted after the page loads. Once I got that, I realized that I could put the alert in the onclick parameter of a hyperlink as <a onclick="alert('hi');">, and this worked.
   
 Level 3: It took me way too long to realize that the string gets plopped unchanged into an img tag and I can do the exact same thing I did for level 2 by putting `1.jpg' onclick=alert('hi') '` in the URL.
+
+Level 4: At first I was very fixated on putting stuff in the URL because of the previous levels. It took two hints and far too much time for me to figure out that I can just put `',alert(1),'` in the form input.
 
 ### Format
 
