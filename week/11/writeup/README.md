@@ -28,11 +28,13 @@ Produce a writeup. We will not take off points for viewing the source code and/o
 
 Level 1: Typed in <script>alert("hi");</script> and won.
 
-Level 2: It took me a bit of pondering and looking through the code to realize that a <script> wouldn't be executed because it is inserted after the page loads. Once I got that, I realized that I could put the alert in the onclick parameter of a hyperlink as <a onclick="alert('hi');">, and this worked.
+Level 2: It took me a bit of pondering and looking through the code to realize that a <script> wouldn't be executed because it is inserted after the page loads. Once I got that, I realized that I could put the alert in the onclick attribute of a hyperlink as <a onclick="alert('hi');">, and this worked.
   
 Level 3: It took me way too long to realize that the string gets plopped unchanged into an img tag and I can do the exact same thing I did for level 2 by putting `1.jpg' onclick=alert('hi') '` in the URL.
 
 Level 4: At first I was very fixated on putting stuff in the URL because of the previous levels. It took two hints and far too much time for me to figure out that I can just put `',alert(1),'` in the form input.
+
+Level 5: I'm sure I learned about `javascript:` protocol and forgot about it long ago. I would not have solved this one without the hint. I was trying to break out of the href attribute for quite a while.
 
 ### Format
 
