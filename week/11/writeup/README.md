@@ -26,6 +26,12 @@ Complete all 6 levels of:
 
 Produce a writeup. We will not take off points for viewing the source code and/or viewing hints, but we strongly discourage reading online write-ups as that defeats the purpose of the homework.
 
+Level 1: Typed in <script>alert("hi");</script> and won.
+
+Level 2: It took me a bit of pondering and looking through the code to realize that a <script> wouldn't be executed because it is inserted after the page loads. Once I got that, I realized that I could put the alert in the onclick parameter of a hyperlink as <a onclick="alert('hi');">, and this worked.
+  
+Level 3: It took me way too long to realize that the string gets plopped unchanged into an img tag and I can do the exact same thing I did for level 2 by putting `1.jpg' onclick=alert('hi') '` in the URL.
+
 ### Format
 
 Part 1 and 2 can be answered in bullet form or full, grammatical sentences.
